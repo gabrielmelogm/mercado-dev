@@ -4,6 +4,6 @@ export class Product {
 	description?: string
 	thumb: string
 	price: number
-	createdAt?: string
-	updatedAt?: string
+	createdAt?: Date
+	updatedAt?: Date
 }
