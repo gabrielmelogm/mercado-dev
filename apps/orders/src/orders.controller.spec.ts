@@ -1,22 +1,22 @@
-import { Test, type TestingModule } from "@nestjs/testing";
-import { OrdersController } from "./orders.controller";
-import { OrdersService } from "./orders.service";
+import { Test, type TestingModule } from '@nestjs/testing'
+import { OrdersController } from './orders.controller'
+import { OrdersService } from './orders.service'
 
-describe("OrdersController", () => {
-	let ordersController: OrdersController;
+describe('OrdersController', () => {
+	let ordersController: OrdersController
 
 	beforeEach(async () => {
 		const app: TestingModule = await Test.createTestingModule({
 			controllers: [OrdersController],
 			providers: [OrdersService],
-		}).compile();
+		}).compile()
 
-		ordersController = app.get<OrdersController>(OrdersController);
-	});
+		ordersController = app.get<OrdersController>(OrdersController)
+	})
 
-	describe("root", () => {
+	describe('root', () => {
 		it('should return "Hello World!"', () => {
-			expect(ordersController.getHello()).toBe("Hello World!");
-		});
-	});
-});
+			expect(ordersController.getHello()).toBe('Hello World!')
+		})
+	})
+})

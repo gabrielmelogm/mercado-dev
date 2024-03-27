@@ -1,1 +1,15 @@
 GET http://localhost:3000/products
+
+###
+GET http://localhost:3000/products/clua0b9ni0000sz8er2oonbq3
+
+###
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "title": "HQ Nº1 Amazing Spiderman",
+  "description": "Spiderman version Nº 1",
+  "thumb": "https://http2.mlstatic.com/D_NQ_NP_757460-MLB50284638311_062022-O.webp",
+  "price": 69.93
+}

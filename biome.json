@@ -3,6 +3,15 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "asNeeded",
+			"quoteStyle": "single"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
