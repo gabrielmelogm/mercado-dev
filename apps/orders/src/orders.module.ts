@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { ClientsModule, Transport } from '@nestjs/microservices'
 import { OrdersController } from './orders.controller'
 import { OrdersService } from './orders.service'
 import { PrismaModule } from './prisma/prisma.module'
@@ -6,7 +7,21 @@ import { PrismaOrdersRepository } from './repositories/implements/prismaOrders.r
 import { OrdersRepository } from './repositories/orders.repository'
 
 @Module({
-	imports: [PrismaModule],
+	imports: [
+		PrismaModule,
+		ClientsModule.register([
+			{
+				name: 'ORDERS_SERVICE',
+				transport: Transport.KAFKA,
+				options: {
+					client: {
+						clientId: 'orders',
+						brokers: ['localhost:9092'],
+					},
+				},
+			},
+		]),
+	],
 	providers: [
 		OrdersService,
 		{
