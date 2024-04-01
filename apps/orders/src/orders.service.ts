@@ -7,6 +7,10 @@ import { OrdersRepository } from './repositories/orders.repository'
 export class OrdersService {
 	constructor(private readonly ordersRepository: OrdersRepository) {}
 
+	async findOrder(id: string): Promise<Order> {
+		return await this.ordersRepository.findOne(id)
+	}
+
 	async createOrder(order: CreateOrderDto): Promise<Order> {
 		return await this.ordersRepository.createOrder(order)
 	}

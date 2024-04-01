@@ -31,6 +31,27 @@ describe('Orders Service', () => {
 		expect(ordersService).toBeDefined()
 	})
 
+	describe('findOrder', () => {
+		it('should return a order by id', async () => {
+			const createOrderResponse: Order = {
+				id: faker.string.uuid(),
+				price: Number.parseFloat(faker.commerce.price()),
+				product_id: faker.string.uuid(),
+				status: OrderStatus.PENDING,
+				createdAt: faker.date.past(),
+				updatedAt: faker.date.recent(),
+			}
+
+			jest
+				.spyOn(ordersRepository, 'findOne')
+				.mockResolvedValueOnce(createOrderResponse)
+
+			await expect(
+				ordersService.findOrder(createOrderResponse.id),
+			).resolves.toEqual(createOrderResponse)
+		})
+	})
+
 	describe('createOrder', () => {
 		it('should create a order', async () => {
 			const createOrderDto: CreateOrderDto = {

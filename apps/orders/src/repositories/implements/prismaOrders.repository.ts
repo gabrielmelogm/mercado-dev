@@ -8,6 +8,14 @@ import { OrdersRepository } from '../orders.repository'
 export class PrismaOrdersRepository implements OrdersRepository {
 	constructor(private readonly prisma: PrismaService) {}
 
+	async findOne(id: string): Promise<Order> {
+		return await this.prisma.orders.findFirst({
+			where: {
+				id,
+			},
+		})
+	}
+
 	async createOrder(order: CreateOrderDto): Promise<Order> {
 		return await this.prisma.orders.create({
 			data: {
