@@ -2,12 +2,12 @@ export class Order {
 	id?: string
 	price: number
 	product_id: string
-	status: OrderStatus
+	status: string
 	createdAt?: Date
 	updatedAt?: Date
 }
 
-enum OrderStatus {
+export enum OrderStatus {
 	PENDING = 'PENDING',
 	PAYED = 'PAYED',
 	CANCELLED = 'CANCELLED',

@@ -13,3 +13,12 @@ Content-Type: application/json
   "thumb": "https://http2.mlstatic.com/D_NQ_NP_757460-MLB50284638311_062022-O.webp",
   "price": 69.93
 }
+
+###
+POST http://localhost:3001/orders
+Content-Type: application/json
+
+{
+  "price": 69.93,
+  "product_id": "cluh7n0gd0000wokpwp9oeixx"
+}
