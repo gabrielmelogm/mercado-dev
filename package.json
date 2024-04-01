@@ -17,7 +17,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/mercado-dev/test/jest-e2e.json",
-    "lint": "npx @biomejs/biome check --apply-unsafe apps"
+    "lint": "npx @biomejs/biome check --apply-unsafe apps",
+    "seed:products": "ts-node ./apps/products/prisma/seed.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
