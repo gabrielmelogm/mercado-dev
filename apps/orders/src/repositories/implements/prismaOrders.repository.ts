@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { CreateOrderDto } from '../../dto/createOrder.dto'
+import { UpdateOrderDto } from '../../dto/updateOrder.dto'
 import { Order, OrderStatus } from '../../entities/order.entity'
 import { PrismaService } from '../../prisma/prisma.service'
 import { OrdersRepository } from '../orders.repository'
@@ -21,6 +22,15 @@ export class PrismaOrdersRepository implements OrdersRepository {
 			data: {
 				...order,
 				status: OrderStatus.PENDING,
+			},
+		})
+	}
+
+	async updateOrder(id: string, order: UpdateOrderDto): Promise<Order> {
+		return await this.prisma.orders.update({
+			data: order,
+			where: {
+				id,
 			},
 		})
 	}

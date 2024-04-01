@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common'
 import { ClientKafka } from '@nestjs/microservices'
 import { lastValueFrom } from 'rxjs'
 import { CreateOrderDto } from './dto/createOrder.dto'
+import { UpdateOrderDto } from './dto/updateOrder.dto'
 import { Order } from './entities/order.entity'
 import { OrdersRepository } from './repositories/orders.repository'
 
@@ -32,5 +33,9 @@ export class OrdersService {
 		)
 
 		return createdOrder
+	}
+
+	async complete(id: string, updateOrderDto: UpdateOrderDto) {
+		return await this.ordersRepository.updateOrder(id, updateOrderDto)
 	}
 }
