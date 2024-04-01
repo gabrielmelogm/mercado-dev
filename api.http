@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3001/order/cluhcuid20000fwoh2mkmqnab
+GET http://localhost:3001/order/cluhiumdc00004fmn947yft4r
 
 ###
 POST http://localhost:3001/orders

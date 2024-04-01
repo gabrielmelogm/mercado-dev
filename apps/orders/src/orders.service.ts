@@ -20,7 +20,16 @@ export class OrdersService {
 	async createOrder(order: CreateOrderDto): Promise<Order> {
 		const createdOrder = await this.ordersRepository.createOrder(order)
 
-		await lastValueFrom(this.kafkaClient.emit('orders', order))
+		await lastValueFrom(
+			this.kafkaClient.emit('orders', {
+				order_id: createdOrder.id,
+				product_id: createdOrder.product_id,
+				price: createdOrder.price,
+				status: createdOrder.status,
+				createdAt: createdOrder.createdAt,
+				updatedAt: createdOrder.updatedAt,
+			}),
+		)
 
 		return createdOrder
 	}
