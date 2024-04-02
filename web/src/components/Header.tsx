@@ -1,5 +1,5 @@
-import { SettingsMenu } from '@/components/SettingsMenu'
-import { Input } from '@/components/ui/input'
+import { SettingsMenu } from '@/src/components/SettingsMenu'
+import { Input } from '@/src/components/ui/input'
 
 export function Header() {
 	return (
