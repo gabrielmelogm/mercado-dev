@@ -1,4 +1,5 @@
-import { Settings } from 'lucide-react'
+import { Settings, ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
 import { SwitchTheme } from './SwitchTheme'
 import { Button } from './ui/button'
 import {
@@ -21,11 +22,11 @@ export function SettingsMenu() {
 			<DropdownMenuContent className="w-56" align="start">
 				<DropdownMenuGroup>
 					<SwitchTheme />
-					{/* <DropdownMenuItem className="cursor-pointer">
-						<Sun className="mr-2 h-4 w-4" />
-						<SwitchTheme />
-						<DropdownMenuShortcut>T</DropdownMenuShortcut>
-					</DropdownMenuItem> */}
+					<DropdownMenuItem className="cursor-pointer">
+						<ShoppingCart className="mr-2 h-4 w-4" />
+						<Link href="/purchase">Pedidos</Link>
+						<DropdownMenuShortcut>C</DropdownMenuShortcut>
+					</DropdownMenuItem>
 				</DropdownMenuGroup>
 			</DropdownMenuContent>
 		</DropdownMenu>
