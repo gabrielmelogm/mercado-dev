@@ -1,3 +1,4 @@
+import axios from 'axios'
 import z from 'zod'
 
 export const productSchema = z.object({
@@ -12,4 +13,9 @@ export const productSchema = z.object({
 
 export type IProductProps = z.infer<typeof productSchema>
 
-export async function getProject(id: string) {}
+export async function getProject(id: string) {
+	const response = await axios.get(`${process.env.APP_PRODUCTS_URL}/products/${id}`)
+	const product = productSchema.parse(response.data)
+
+	return product
+}
