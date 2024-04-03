@@ -25,7 +25,7 @@ export class OrdersService {
 			this.kafkaClient.emit('orders', {
 				order_id: createdOrder.id,
 				product_id: createdOrder.product_id,
-				price: createdOrder.price,
+				price: createdOrder.price * createdOrder.quantity,
 				status: createdOrder.status,
 				createdAt: createdOrder.createdAt,
 				updatedAt: createdOrder.updatedAt,

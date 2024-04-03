@@ -17,6 +17,7 @@ datasource db {
 model Orders {
   id         String      @id @default(cuid())
   price      Float
+  quantity   Int
   product_id String
   status     OrderStatus
   createdAt  DateTime    @default(now())
