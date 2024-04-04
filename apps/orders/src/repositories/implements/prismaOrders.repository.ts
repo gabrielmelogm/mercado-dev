@@ -9,6 +9,10 @@ import { OrdersRepository } from '../orders.repository'
 export class PrismaOrdersRepository implements OrdersRepository {
 	constructor(private readonly prisma: PrismaService) {}
 
+	async findAll(): Promise<Order[]> {
+		return await this.prisma.orders.findMany()
+	}
+
 	async findOne(id: string): Promise<Order> {
 		return await this.prisma.orders.findFirst({
 			where: {

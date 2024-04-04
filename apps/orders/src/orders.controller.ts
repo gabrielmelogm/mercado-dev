@@ -9,6 +9,11 @@ import { OrdersService } from './orders.service'
 export class OrdersController {
 	constructor(private readonly ordersService: OrdersService) {}
 
+	@Get('orders')
+	async findAll(): Promise<Order[]> {
+		return await this.ordersService.findAll()
+	}
+
 	@Get('order/:id')
 	async findOrder(@Param('id') id: string): Promise<Order> {
 		return await this.ordersService.findOrder(id)

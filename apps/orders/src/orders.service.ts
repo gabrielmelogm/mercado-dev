@@ -14,6 +14,10 @@ export class OrdersService {
 		private kafkaClient: ClientKafka,
 	) {}
 
+	async findAll(): Promise<Order[]> {
+		return await this.ordersRepository.findAll()
+	}
+
 	async findOrder(id: string): Promise<Order> {
 		return await this.ordersRepository.findOne(id)
 	}
