@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getProject } from '../services/products/getProject'
-import { ProductCheckout } from './ProductCheckout'
+import { ProductQuantity } from './ProductQuantity'
 
 export async function ProductDashboard(props: { id: string }) {
 	const product = await getProject(props.id)
@@ -21,7 +21,7 @@ export async function ProductDashboard(props: { id: string }) {
 						<h4 className="text-sm text-zinc-400">R$ {product.price}</h4>
 						<p className="text-sm text-zinc-400">{product.description}</p>
 
-						<ProductCheckout product={product} />
+						<ProductQuantity product={product} />
 					</div>
 				</div>
 			</div>
