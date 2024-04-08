@@ -3,7 +3,7 @@ import { productSchema } from './getProject'
 
 const productsSchema = productSchema.array()
 
-export async function getAllProjects() {
+export async function getAllProducts() {
 	const response = await axios.get(`${process.env.APP_PRODUCTS_URL}/products`)
 	const products = productsSchema.parse(response.data)
 

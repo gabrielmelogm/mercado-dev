@@ -7,9 +7,9 @@ const orderSchema = z.object({
 	product_id: z.string(),
 })
 
-export type IOrderProps = z.infer<typeof orderSchema>
+export type IOrderRequestProps = z.infer<typeof orderSchema>
 
-export async function createOrder(order: IOrderProps) {
+export async function createOrder(order: IOrderRequestProps) {
 	const response = await axios.post(
 		`${process.env.NEXT_PUBLIC_APP_ORDERS_URL}/orders`,
 		order,

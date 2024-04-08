@@ -5,7 +5,7 @@ export function Content(props: {
 	className?: string | undefined
 }) {
 	return (
-		<div className={`w-full max-w-[1200px] ${props.className}`}>
+		<div className={`w-full max-w-[1200px] ${props.className ?? ''}`}>
 			{props.children}
 		</div>
 	)
