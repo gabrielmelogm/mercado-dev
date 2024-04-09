@@ -1,8 +1,8 @@
-import { getAllProjects } from '../services/products/getAllProducts'
+import { getAllProducts } from '../services/products/getAllProducts'
 import { ProductCard } from './ProductCard'
 
 export async function RecommendedProducts() {
-	const products = await getAllProjects()
+	const products = await getAllProducts()
 
 	return (
 		<ul className="flex gap-4">
