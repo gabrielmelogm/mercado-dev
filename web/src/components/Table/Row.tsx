@@ -19,7 +19,7 @@ export function Row({ data }: IRowDataProps) {
 			<div className="w-full grid grid-cols-3 gap-2 border-y-[1px] border-zinc-800 py-4 my-4">
 				<div>
 					<h3>{data.id}</h3>
-					<span>x 2</span>
+					<span>x {data.quantity}</span>
 				</div>
 				<span className="justify-self-end">{formatMoney(data.price)}</span>
 			</div>
