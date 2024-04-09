@@ -16,7 +16,7 @@ import { PaymentsRepository } from './repositories/payments.repository'
 				options: {
 					client: {
 						clientId: 'payments',
-						brokers: ['localhost:9092'],
+						brokers: ['kafka:29092'],
 					},
 				},
 			},

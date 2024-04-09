@@ -16,7 +16,7 @@ import { OrdersRepository } from './repositories/orders.repository'
 				options: {
 					client: {
 						clientId: 'orders',
-						brokers: ['localhost:9092'],
+						brokers: ['kafka:29092'],
 					},
 				},
 			},

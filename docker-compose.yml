@@ -1,14 +1,43 @@
-version: '3'
-
 services:
+  # Microservices #
 
-  # app:
-  #   build: .
-  #   container_name: "mercado_dev-app"
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - .:/home/node/app
+  products:
+    build: .
+    container_name: "mercado_dev-app--products"
+    entrypoint: ./.docker/scripts/start_products.sh
+    depends_on:
+      - mysql
+      - kafka
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+
+  orders:
+    build: .
+    container_name: "mercado_dev-app--orders"
+    entrypoint: ./.docker/scripts/start_orders.sh
+    depends_on:
+      - mysql
+      - kafka
+    ports:
+      - 3001:3001
+    volumes:
+      - .:/home/node/app
+
+  payments:
+    build: .
+    container_name: "mercado_dev-app--payments"
+    entrypoint: ./.docker/scripts/start_payments.sh
+    depends_on:
+      - mysql
+      - kafka
+    ports:
+      - 3002:3002
+    volumes:
+      - .:/home/node/app
+
+  ######################
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.0
