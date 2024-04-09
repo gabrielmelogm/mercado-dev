@@ -1,10 +1,14 @@
 'use client'
 
+import { formatMoney } from '@/src/lib/utils'
 import { Loader } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-import { IOrderProps, createOrder } from '../../services/orders/createOrder'
+import {
+	IOrderRequestProps,
+	createOrder,
+} from '../../services/orders/createOrder'
 import { IProductProps } from '../../services/products/getProject'
 import { Button } from '../ui/button'
 
@@ -21,7 +25,7 @@ export function ProductCheckout({
 
 		setLoading(true)
 
-		const data: IOrderProps = {
+		const data: IOrderRequestProps = {
 			product_id: product.id,
 			price: product.price,
 			quantity: Number.parseInt(quantity),
@@ -44,11 +48,11 @@ export function ProductCheckout({
 			/>
 			<h4 className="font-bold">{product.title}</h4>
 			<span className="text-zinc-400">
-				{Number.parseInt(quantity)} x R$ {product.price}
+				{Number.parseInt(quantity)} x {formatMoney(product.price)}
 			</span>
 			<span>
 				<strong>Total: </strong>
-				<span>R$ {Number.parseInt(quantity) * product.price}</span>
+				<span>{formatMoney(Number.parseInt(quantity) * product.price)}</span>
 			</span>
 
 			<Button type="submit" disabled={loading} className="mt-4">

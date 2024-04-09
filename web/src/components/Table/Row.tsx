@@ -1,3 +1,4 @@
+import { formatMoney } from '@/src/lib/utils'
 import {
 	IOrderProps,
 	STATUS_TRANSLATION,
@@ -20,10 +21,11 @@ export function Row({ data }: IRowDataProps) {
 					<h3>{data.id}</h3>
 					<span>x 2</span>
 				</div>
-				<span className="justify-self-end">R$ {data.price}</span>
+				<span className="justify-self-end">{formatMoney(data.price)}</span>
 			</div>
 			<span className="self-end">
-				Total do Pedido: <strong>R$ {data.quantity * data.price}</strong>
+				Total do Pedido:{' '}
+				<strong>{formatMoney(data.quantity * data.price)}</strong>
 			</span>
 		</li>
 	)

@@ -1,3 +1,4 @@
+import { formatMoney } from '@/src/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IProductProps } from '../../services/products/getProject'
@@ -33,7 +34,7 @@ export function ProductCard({
 						{product.title}
 					</p>
 					<p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-						{`R$ ${product.price}`}
+						{formatMoney(product.price)}
 					</p>
 				</div>
 				<p

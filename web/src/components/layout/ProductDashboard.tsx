@@ -1,3 +1,4 @@
+import { formatMoney } from '@/src/lib/utils'
 import Image from 'next/image'
 import { getProject } from '../../services/products/getProject'
 import { ProductQuantity } from './ProductQuantity'
@@ -18,7 +19,9 @@ export async function ProductDashboard(props: { id: string }) {
 					/>
 					<div className="self-center flex flex-col gap-2">
 						<h3 className="text-3xl font-bold">{product.title}</h3>
-						<h4 className="text-sm text-zinc-400">R$ {product.price}</h4>
+						<h4 className="text-sm text-zinc-400">
+							{formatMoney(product.price)}
+						</h4>
 						<p className="text-sm text-zinc-400">{product.description}</p>
 
 						<ProductQuantity product={product} />
