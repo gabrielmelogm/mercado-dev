@@ -2,7 +2,7 @@
 
 import { Sun } from 'lucide-react'
 import { useEffect } from 'react'
-import { DropdownMenuItem, DropdownMenuShortcut } from './ui/dropdown-menu'
+import { DropdownMenuItem, DropdownMenuShortcut } from '../ui/dropdown-menu'
 
 export function SwitchTheme() {
 	function onChangeTheme(): void {

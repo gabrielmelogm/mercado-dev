@@ -1,4 +1,4 @@
-import { SettingsMenu } from '@/src/components/SettingsMenu'
+import { SettingsMenu } from '@/src/components/layout/SettingsMenu'
 import { Input } from '@/src/components/ui/input'
 import Link from 'next/link'
 import { Content } from './Content'

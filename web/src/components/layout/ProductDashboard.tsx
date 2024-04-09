@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getProject } from '../services/products/getProject'
+import { getProject } from '../../services/products/getProject'
 import { ProductQuantity } from './ProductQuantity'
 
 export async function ProductDashboard(props: { id: string }) {

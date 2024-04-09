@@ -4,9 +4,9 @@ import { Loader } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-import { IOrderProps, createOrder } from '../services/orders/createOrder'
-import { IProductProps } from '../services/products/getProject'
-import { Button } from './ui/button'
+import { IOrderProps, createOrder } from '../../services/orders/createOrder'
+import { IProductProps } from '../../services/products/getProject'
+import { Button } from '../ui/button'
 
 export function ProductCheckout({
 	product,

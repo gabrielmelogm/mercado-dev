@@ -1,7 +1,6 @@
 import { Settings, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
-import { SwitchTheme } from './SwitchTheme'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -9,7 +8,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
-} from './ui/dropdown-menu'
+} from '../ui/dropdown-menu'
+import { SwitchTheme } from './SwitchTheme'
 
 export function SettingsMenu() {
 	return (

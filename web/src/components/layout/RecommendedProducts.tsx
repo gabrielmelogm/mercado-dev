@@ -1,4 +1,4 @@
-import { getAllProducts } from '../services/products/getAllProducts'
+import { getAllProducts } from '../../services/products/getAllProducts'
 import { ProductCard } from './ProductCard'
 
 export async function RecommendedProducts() {

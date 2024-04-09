@@ -2,8 +2,8 @@
 import { CircleMinus, CirclePlus } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { IProductProps } from '../services/products/getProject'
-import { Button } from './ui/button'
+import { IProductProps } from '../../services/products/getProject'
+import { Button } from '../ui/button'
 
 export function ProductQuantity({ product }: { product: IProductProps }) {
 	const [quantity, setQuantity] = useState<number>(1)

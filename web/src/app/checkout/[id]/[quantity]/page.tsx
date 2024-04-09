@@ -1,5 +1,5 @@
 import { Content } from '@/src/components/Content'
-import { ProductCheckout } from '@/src/components/ProductCheckout'
+import { ProductCheckout } from '@/src/components/layout/ProductCheckout'
 import { Button } from '@/src/components/ui/button'
 import { getProject } from '@/src/services/products/getProject'
 import Image from 'next/image'

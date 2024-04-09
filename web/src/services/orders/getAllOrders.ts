@@ -1,15 +1,23 @@
 import axios from 'axios'
 import { z } from 'zod'
 
+const StatusEnum = z.enum(['PENDING', 'PAYED', 'CANCELLED'])
+
 const orderSchema = z.object({
 	id: z.string(),
 	price: z.number(),
 	quantity: z.number(),
 	product_id: z.string(),
-	status: z.enum(['PENDING', 'PAYED', 'CANCELLED']),
+	status: StatusEnum,
 	createdAt: z.string(),
 	updatedAt: z.string(),
 })
+
+export const STATUS_TRANSLATION = {
+	PENDING: 'PENDENTE',
+	PAYED: 'PAGO',
+	CANCELLED: 'CANCELADO',
+}
 
 export type IOrderProps = z.infer<typeof orderSchema>
 

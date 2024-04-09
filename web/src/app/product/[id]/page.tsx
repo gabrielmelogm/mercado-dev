@@ -1,5 +1,5 @@
-import { ProductDashboard } from '@/src/components/ProductDashboard'
-import { RecommendedProducts } from '@/src/components/RecommendedProducts'
+import { ProductDashboard } from '@/src/components/layout/ProductDashboard'
+import { RecommendedProducts } from '@/src/components/layout/RecommendedProducts'
 
 interface ProductPagesProps {
 	params: {

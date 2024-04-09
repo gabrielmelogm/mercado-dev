@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { IProductProps } from '../services/products/getProject'
-import { Button } from './ui/button'
+import { IProductProps } from '../../services/products/getProject'
+import { Button } from '../ui/button'
 
 interface IProductCardProps {
 	product: IProductProps
