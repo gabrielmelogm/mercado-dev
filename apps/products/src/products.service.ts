@@ -18,4 +18,9 @@ export class ProductsService {
 	async createProduct(data: CreateProductDto): Promise<Product> {
 		return await this.productsRepository.createProduct(data)
 	}
+
+	async getRecommended(): Promise<Product> {
+		const products = await this.productsRepository.findAll()
+		return products[0]
+	}
 }

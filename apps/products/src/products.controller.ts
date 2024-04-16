@@ -3,22 +3,27 @@ import { CreateProductDto } from './dto/createProduct.dto'
 import { Product } from './entities/product.entity'
 import { ProductsService } from './products.service'
 
-@Controller('products')
+@Controller()
 export class ProductsController {
 	constructor(private readonly productsService: ProductsService) {}
 
-	@Get()
+	@Get('products')
 	async getAll(): Promise<Product[]> {
 		const products = await this.productsService.getAll()
 		return products
 	}
 
-	@Get(':id')
+	@Get('product/get/:id')
 	async getOne(@Param('id') id: string): Promise<Product> {
 		return await this.productsService.getOne(id)
 	}
 
-	@Post()
+	@Get('product/recommended')
+	async getRecommended(): Promise<Product> {
+		return await this.productsService.getRecommended()
+	}
+
+	@Post('products')
 	async createProduct(
 		@Body() createProductDto: CreateProductDto,
 	): Promise<Product> {

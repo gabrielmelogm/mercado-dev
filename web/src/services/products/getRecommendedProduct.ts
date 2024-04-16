@@ -13,9 +13,9 @@ export const productSchema = z.object({
 
 export type IProductProps = z.infer<typeof productSchema>
 
-export async function getProject(id: string) {
+export async function getRecommendedProduct() {
 	const response = await axios.get(
-		`${process.env.APP_PRODUCTS_URL}/product/get/${id}`,
+		`${process.env.APP_PRODUCTS_URL}/product/recommended`,
 	)
 	const product = productSchema.parse(response.data)
 

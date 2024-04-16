@@ -17,7 +17,7 @@ export function ProductCard({
 	return (
 		<li
 			{...props}
-			className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
+			className="relative flex w-96 flex-col justify-between rounded-xl bg-white bg-clip-border text-gray-700 shadow-md dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
 		>
 			<div className="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
 				<Image
@@ -46,12 +46,7 @@ export function ProductCard({
 				</p>
 			</div>
 			<div className="p-6 pt-0">
-				<Button
-					className="w-full dark:bg-white dark:text-black dark:hover:bg-zinc-300"
-					type="button"
-					variant="ghost"
-					asChild
-				>
+				<Button className="w-full" type="button" asChild>
 					<Link href={`/product/${product.id}`}>Comprar</Link>
 				</Button>
 			</div>
