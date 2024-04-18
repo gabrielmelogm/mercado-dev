@@ -71,11 +71,11 @@ export function SwitchTheme() {
 	return (
 		<>
 			<div
-				className="flex items-center space-x-2 cursor-pointer w-12 h-12"
+				className="w-full h-full flex items-center justify-center"
 				onClick={onChangeTheme}
 				onKeyDown={onKeyDown}
 			>
-				<Sun className="mr-2 h-28 w-h-28 text-white" />
+				<Sun className="w-8 h-6 text-zinc-200" />
 			</div>
 		</>
 	)
