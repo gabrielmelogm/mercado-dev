@@ -40,6 +40,7 @@ describe('Orders Service', () => {
 				status: OrderStatus.PENDING,
 				createdAt: faker.date.past(),
 				updatedAt: faker.date.recent(),
+				quantity: faker.number.int(),
 			}
 
 			jest
@@ -57,11 +58,13 @@ describe('Orders Service', () => {
 			const createOrderDto: CreateOrderDto = {
 				price: Number.parseFloat(faker.commerce.price()),
 				product_id: faker.string.uuid(),
+				quantity: faker.number.int(),
 			}
 
 			const createOrderResponse: Order = {
 				id: faker.string.uuid(),
 				price: createOrderDto.price,
+				quantity: createOrderDto.quantity,
 				product_id: createOrderDto.product_id,
 				status: OrderStatus.PENDING,
 				createdAt: faker.date.past(),
