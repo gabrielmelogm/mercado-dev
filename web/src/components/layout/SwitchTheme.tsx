@@ -5,14 +5,16 @@ import { useEffect } from 'react'
 
 export function SwitchTheme() {
 	function onChangeTheme(): void {
-		const getLocalColorScheme = localStorage.getItem('colorScheme')
+		const getLocalColorScheme = getStorageColorScheme()
 
 		if (getLocalColorScheme === 'light') {
 			localStorage.setItem('colorScheme', 'dark')
+			setColorScheme('dark')
 		}
 
 		if (getLocalColorScheme === 'dark') {
 			localStorage.setItem('colorScheme', 'light')
+			setColorScheme('light')
 		}
 	}
 
@@ -34,18 +36,35 @@ export function SwitchTheme() {
 		return 'light'
 	}
 
+	function getStorageColorScheme(): 'light' | 'dark' | null {
+		const colorScheme = localStorage.getItem('colorScheme') as
+			| 'light'
+			| 'dark'
+			| null
+
+		return colorScheme
+	}
+
+	function setColorScheme(colorScheme: 'dark' | 'light'): void {
+		const el = document.querySelector('html')
+
+		el?.classList.remove('dark')
+		el?.classList.remove('light')
+
+		el?.classList.add(colorScheme)
+	}
+
 	useEffect(() => {
-		const colorScheme = getColorScheme()
-		const getLocalColorScheme = localStorage.getItem('colorScheme')
+		const storageColorScheme = getStorageColorScheme()
 
-		if (!getLocalColorScheme) {
-			if (colorScheme) {
-				localStorage.setItem('colorScheme', colorScheme)
-			}
+		if (!storageColorScheme) {
+			const colorScheme = getColorScheme()
+			setColorScheme(colorScheme)
+			localStorage.setItem('colorScheme', colorScheme)
+		}
 
-			if (!colorScheme) {
-				localStorage.setItem('colorScheme', 'light')
-			}
+		if (storageColorScheme) {
+			setColorScheme(storageColorScheme)
 		}
 	}, [])
 
