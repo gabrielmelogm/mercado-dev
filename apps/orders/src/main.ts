@@ -13,15 +13,14 @@ async function bootstrap() {
 		origin: '*',
 	})
 	app.connectMicroservice<MicroserviceOptions>({
-		transport: Transport.KAFKA,
+		transport: Transport.RMQ,
 		options: {
-			client: {
-				brokers: ['kafka:29092'],
-			},
-			consumer: {
-				groupId: 'orders-consumer',
-			},
-		},
+			urls: ['amqp://admin:admin@rabbitmq:5672'],
+			queue: 'payments',
+			queueOptions: {
+				durable: false
+			}
+		}
 	})
 	await app.startAllMicroservices()
 	await app.listen(3001)

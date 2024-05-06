@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { MessagePattern, Payload } from '@nestjs/microservices'
+import { Ctx, EventPattern, MessagePattern, Payload, RmqContext } from '@nestjs/microservices'
 import { CreateOrderDto } from './dto/createOrder.dto'
 import { Order, OrderStatus } from './entities/order.entity'
 import { OrdersService } from './orders.service'
@@ -23,8 +23,10 @@ export class OrdersController {
 		return await this.ordersService.createOrder(createOrderDto)
 	}
 
-	@MessagePattern('payments')
-	async complete(@Payload() message: any) {
+	@EventPattern('payments')
+	async complete(@Payload() data: any) {
+		const message = data
+
 		await this.ordersService.complete(message.order_id, {
 			status:
 				message.status === 'APPROVED'

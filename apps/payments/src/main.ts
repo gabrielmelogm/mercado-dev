@@ -5,14 +5,13 @@ import { PaymentsModule } from './payments.module'
 async function bootstrap() {
 	const app = await NestFactory.create(PaymentsModule)
 	app.connectMicroservice<MicroserviceOptions>({
-		transport: Transport.KAFKA,
+		transport: Transport.RMQ,
 		options: {
-			client: {
-				brokers: ['kafka:29092'],
-			},
-			consumer: {
-				groupId: 'payments-consumer',
-			},
+			urls: ['amqp://admin:admin@rabbitmq:5672'],
+			queue: 'orders',
+			queueOptions: {
+				durable: false
+			}
 		},
 	})
 	await app.startAllMicroservices()
