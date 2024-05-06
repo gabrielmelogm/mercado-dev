@@ -24,7 +24,7 @@
 	},
 	"customizations": {
 		"vscode": {
-			"extensions": [ "prisma.prisma", "irongeek.vscode-env", "humao.rest-client" ]
+			"extensions": [ "prisma.prisma", "irongeek.vscode-env", "humao.rest-client", "hashicorp.terraform" ]
 		}
 	}
 
