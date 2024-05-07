@@ -33,3 +33,12 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ./.docker/mysql:/docker-entrypoint-initdb.d
+  
+  dynamodb:
+    image: amazon/dynamodb-local
+    container_name: "mercado_dev-dynamodb"
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory -port 8000"
+    volumes:
+      - "./.docker/dynamodb:/home/dynamodblocal/data"

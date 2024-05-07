@@ -32,3 +32,16 @@ Content-Type: application/json
   "quantity": 2,
   "product_id": "clvue8q6l0000kgyi81ujmjgv"
 }
+
+###
+GET http://localhost:3003/clvue8q6l0000kgyi81ujmjgv
+
+###
+POST http://localhost:3003
+Content-Type: application/json
+
+{
+  "title": "Teste",
+  "content": "lorem",
+  "userId": "clvue8q6l0000kgyi81ujmjgv"
+}
