@@ -21,7 +21,7 @@ export class DynamoNotificationsRepository implements NotificationsRepository {
       id: randomUUID(),
       userId: notification.userId,
       title: notification.title,
-      content: notification.content
+      content: notification.content,
     }
 
     await this.dynamoClient.put({
@@ -50,7 +50,27 @@ export class DynamoNotificationsRepository implements NotificationsRepository {
     return notifications
   }
 
-  UpdateReadNotification(userId: string, id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async UpdateReadNotification(userId: string, id: string): Promise<Notification> {
+    const data = await this.dynamoClient.update({
+      TableName: this.tbName,
+      Key: {
+        'id': id,
+      },
+      UpdateExpression: 'set #readAt = :readAt',
+      ConditionExpression: '#userId = :userId',
+      ExpressionAttributeNames: {
+        '#readAt': 'readAt',
+        '#userId': 'userId'
+      },
+      ExpressionAttributeValues: {
+        ':readAt': String(new Date().toISOString()),
+        ':userId': userId
+      },
+      ReturnValues: 'ALL_NEW'
+    }).promise()
+
+    const notification = data.Attributes as Notification
+
+    return notification
   }
 }

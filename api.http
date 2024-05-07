@@ -45,3 +45,12 @@ Content-Type: application/json
   "content": "lorem",
   "userId": "clvue8q6l0000kgyi81ujmjgv"
 }
+
+###
+PATCH http://localhost:3003
+Content-Type: application/json
+
+{
+  "userId": "clvue8q6l0000kgyi81ujmjgv",
+  "notificationId": "a2eb2be4-3bf2-4e95-86b0-07feb5ca82b6"
+}
