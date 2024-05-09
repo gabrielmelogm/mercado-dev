@@ -1,13 +1,13 @@
-GET http://localhost:3000/products
+GET http://localhost:8080/products
 
 ###
-GET http://localhost:3000/product/recommended
+GET http://localhost:8080/product/recommended
 
 ###
-GET http://localhost:3000/product/get/clv2ktl8b0000g1kr9zoqjjl7
+GET http://localhost:8080/product/get/clv2ktl8b0000g1kr9zoqjjl7
 
 ###
-POST http://localhost:3000/products
+POST http://localhost:8080/products
 Content-Type: application/json
 
 {
