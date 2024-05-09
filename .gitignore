@@ -2,7 +2,7 @@
 /dist
 /node_modules
 /build
-
+/.pnpm-store
 package-lock.json
 
 # Logs

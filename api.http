@@ -1,13 +1,13 @@
-GET http://localhost:3000/products
+GET http://localhost:8080/products
 
 ###
-GET http://localhost:3000/product/recommended
+GET http://localhost:8080/product/recommended
 
 ###
-GET http://localhost:3000/product/get/clv2ktl8b0000g1kr9zoqjjl7
+GET http://localhost:8080/product/get/clv2ktl8b0000g1kr9zoqjjl7
 
 ###
-POST http://localhost:3000/products
+POST http://localhost:8080/products
 Content-Type: application/json
 
 {
@@ -30,5 +30,27 @@ Content-Type: application/json
 {
   "price": 69.93,
   "quantity": 2,
-  "product_id": "cluh7n0gd0000wokpwp9oeixx"
+  "product_id": "clvue8q6l0000kgyi81ujmjgv"
+}
+
+###
+GET http://localhost:3003/clvue8q6l0000kgyi81ujmjgv
+
+###
+POST http://localhost:3003
+Content-Type: application/json
+
+{
+  "title": "Teste",
+  "content": "lorem",
+  "userId": "clvue8q6l0000kgyi81ujmjgv"
+}
+
+###
+PATCH http://localhost:3003
+Content-Type: application/json
+
+{
+  "userId": "clvue8q6l0000kgyi81ujmjgv",
+  "notificationId": "a2eb2be4-3bf2-4e95-86b0-07feb5ca82b6"
 }

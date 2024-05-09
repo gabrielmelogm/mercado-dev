@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { ClientKafka } from '@nestjs/microservices'
+import { ClientProxy } from '@nestjs/microservices'
 import { lastValueFrom } from 'rxjs'
 import { CreateOrderDto } from './dto/createOrder.dto'
 import { UpdateOrderDto } from './dto/updateOrder.dto'
@@ -11,8 +11,10 @@ export class OrdersService {
 	constructor(
 		private readonly ordersRepository: OrdersRepository,
 		@Inject('ORDERS_SERVICE')
-		private kafkaClient: ClientKafka,
-	) {}
+		private readonly rmqClient: ClientProxy,
+	) {
+		this.rmqClient.connect()
+	}
 
 	async findAll(): Promise<Order[]> {
 		return await this.ordersRepository.findAll()
@@ -25,15 +27,23 @@ export class OrdersService {
 	async createOrder(order: CreateOrderDto): Promise<Order> {
 		const createdOrder = await this.ordersRepository.createOrder(order)
 
+		const message = {
+			order_id: createdOrder.id,
+			product_id: createdOrder.product_id,
+			price: createdOrder.price * createdOrder.quantity,
+			status: createdOrder.status,
+			createdAt: createdOrder.createdAt,
+			updatedAt: createdOrder.updatedAt,
+		}
+
+		const notification = {
+			title: `New order Nº: ${createdOrder.id}`,
+			content: `Quantity: ${createdOrder.quantity}, Value: ${createdOrder.price}`,
+			userId: createdOrder.product_id
+		}
+
 		await lastValueFrom(
-			this.kafkaClient.emit('orders', {
-				order_id: createdOrder.id,
-				product_id: createdOrder.product_id,
-				price: createdOrder.price * createdOrder.quantity,
-				status: createdOrder.status,
-				createdAt: createdOrder.createdAt,
-				updatedAt: createdOrder.updatedAt,
-			}),
+			this.rmqClient.emit('create_order', message)
 		)
 
 		return createdOrder

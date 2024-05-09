@@ -12,12 +12,13 @@ import { PaymentsRepository } from './repositories/payments.repository'
 		ClientsModule.register([
 			{
 				name: 'PAYMENTS_SERVICE',
-				transport: Transport.KAFKA,
+				transport: Transport.RMQ,
 				options: {
-					client: {
-						clientId: 'payments',
-						brokers: ['kafka:29092'],
-					},
+					urls: ['amqp://admin:admin@rabbitmq:5672'],
+					queue: 'payments',
+					queueOptions: {
+						durable: false
+					}
 				},
 			},
 		]),

@@ -1,9 +1,13 @@
+import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
+import { NotificationsModule } from './notifications.module'
 import { MicroserviceOptions, Transport } from '@nestjs/microservices'
-import { PaymentsModule } from './payments.module'
 
 async function bootstrap() {
-	const app = await NestFactory.create(PaymentsModule)
+	const app = await NestFactory.create(NotificationsModule)
+	app.useGlobalPipes(
+		new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
+	)
 	app.connectMicroservice<MicroserviceOptions>({
 		transport: Transport.RMQ,
 		options: {
@@ -14,7 +18,6 @@ async function bootstrap() {
 			}
 		},
 	})
-	await app.startAllMicroservices()
-	await app.listen(3002)
+	await app.listen(3003)
 }
 bootstrap()

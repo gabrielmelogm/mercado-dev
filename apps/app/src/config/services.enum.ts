@@ -1,0 +1,3 @@
+export const SERVICE = {
+  PRODUCTS: 'PRODUCTS_SERVICE'
+}

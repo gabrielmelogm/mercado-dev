@@ -12,11 +12,12 @@ import { OrdersRepository } from './repositories/orders.repository'
 		ClientsModule.register([
 			{
 				name: 'ORDERS_SERVICE',
-				transport: Transport.KAFKA,
+				transport: Transport.RMQ,
 				options: {
-					client: {
-						clientId: 'orders',
-						brokers: ['kafka:29092'],
+					urls: ['amqp://admin:admin@rabbitmq:5672'],
+					queue: 'orders',
+					queueOptions: {
+						durable: false,
 					},
 				},
 			},
