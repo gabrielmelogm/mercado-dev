@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { Ctx, EventPattern, MessagePattern, Payload, RmqContext } from '@nestjs/microservices'
+import { Controller } from '@nestjs/common'
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices'
 import { CreateOrderDto } from './dto/createOrder.dto'
 import { Order, OrderStatus } from './entities/order.entity'
 import { OrdersService } from './orders.service'
@@ -8,18 +8,18 @@ import { OrdersService } from './orders.service'
 export class OrdersController {
 	constructor(private readonly ordersService: OrdersService) {}
 
-	@Get('orders')
+	@MessagePattern('get_orders')
 	async findAll(): Promise<Order[]> {
 		return await this.ordersService.findAll()
 	}
 
-	@Get('order/:id')
-	async findOrder(@Param('id') id: string): Promise<Order> {
-		return await this.ordersService.findOrder(id)
+	@MessagePattern('get_order_by_id')
+	async findOrder(@Payload() data: { id: string }): Promise<Order> {
+		return await this.ordersService.findOrder(data.id)
 	}
 
-	@Post('orders')
-	async createOrder(@Body() createOrderDto: CreateOrderDto): Promise<Order> {
+	@MessagePattern('create_order')
+	async createOrder(@Payload() createOrderDto: CreateOrderDto): Promise<Order> {
 		return await this.ordersService.createOrder(createOrderDto)
 	}
 

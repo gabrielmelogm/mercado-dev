@@ -1,27 +1,16 @@
 import { Module } from '@nestjs/common'
-import { ClientsModule, Transport } from '@nestjs/microservices'
+import { ClientsModule } from '@nestjs/microservices'
 import { OrdersController } from './orders.controller'
 import { OrdersService } from './orders.service'
 import { PrismaModule } from './prisma/prisma.module'
 import { PrismaOrdersRepository } from './repositories/implements/prismaOrders.repository'
 import { OrdersRepository } from './repositories/orders.repository'
+import { ordersServiceConfig } from './services/orders.service'
 
 @Module({
 	imports: [
 		PrismaModule,
-		ClientsModule.register([
-			{
-				name: 'ORDERS_SERVICE',
-				transport: Transport.RMQ,
-				options: {
-					urls: ['amqp://admin:admin@rabbitmq:5672'],
-					queue: 'orders',
-					queueOptions: {
-						durable: false,
-					},
-				},
-			},
-		]),
+		ClientsModule.register([ordersServiceConfig]),
 	],
 	providers: [
 		OrdersService,

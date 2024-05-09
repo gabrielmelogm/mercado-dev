@@ -18,13 +18,13 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3001/orders
+GET http://localhost:8080/orders
 
 ###
-GET http://localhost:3001/order/cluhiumdc00004fmn947yft4r
+GET http://localhost:8080/order/clvzp8xoz000010cfcfuuxwho
 
 ###
-POST http://localhost:3001/orders
+POST http://localhost:8080/orders
 Content-Type: application/json
 
 {
