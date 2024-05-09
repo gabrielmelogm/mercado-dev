@@ -19,7 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/mercado-dev/test/jest-e2e.json",
     "lint": "npx @biomejs/biome check --apply-unsafe apps",
-    "seed:products": "ts-node ./apps/products/prisma/seed.ts"
+    "seed:products": "ts-node ./apps/products/prisma/seed.ts",
+    "generate:spec": "ts-node ./docs/generate-spec.ts"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.569.0",
@@ -28,6 +29,7 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/microservices": "^10.3.5",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^7.3.1",
     "@prisma/client": "^5.11.0",
     "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.4",
@@ -36,6 +38,7 @@
     "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
+    "yaml": "^2.4.2",
     "zod": "^3.23.6"
   },
   "devDependencies": {

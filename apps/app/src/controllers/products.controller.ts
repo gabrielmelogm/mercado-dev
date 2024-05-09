@@ -1,6 +1,9 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { ProductsService } from "../services/products.service";
+import { CreateProductDto } from "../interfaces/dto/createProduct.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('products')
 @Controller()
 export class ProductsController {
   constructor(
@@ -23,7 +26,7 @@ export class ProductsController {
   }
 
   @Post('products')
-  async createProduct(@Body() product) {
-    return await this.productsService.createProduct(product)
+  async createProduct(@Body() createProductDto: CreateProductDto) {
+    return await this.productsService.createProduct(createProductDto)
   }
 }
