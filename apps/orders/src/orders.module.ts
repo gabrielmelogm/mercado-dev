@@ -17,8 +17,8 @@ import { OrdersRepository } from './repositories/orders.repository'
 					urls: ['amqp://admin:admin@rabbitmq:5672'],
 					queue: 'orders',
 					queueOptions: {
-						durable: false
-					}
+						durable: false,
+					},
 				},
 			},
 		]),
