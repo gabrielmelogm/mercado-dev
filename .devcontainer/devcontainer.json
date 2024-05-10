@@ -24,7 +24,7 @@
 	},
 	"customizations": {
 		"vscode": {
-			"extensions": [ "prisma.prisma", "irongeek.vscode-env", "humao.rest-client", "hashicorp.terraform" ]
+			"extensions": [ "prisma.prisma", "irongeek.vscode-env", "humao.rest-client", "hashicorp.terraform", "streetsidesoftware.code-spell-checker", "streetsidesoftware.code-spell-checker-portuguese-brazilian" ]
 		}
 	}
 
