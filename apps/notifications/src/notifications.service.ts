@@ -1,7 +1,4 @@
-import { randomUUID } from 'node:crypto'
 import { Injectable } from '@nestjs/common';
-import { DocumentClient } from 'aws-sdk/clients/dynamodb';
-import { dynamoDBClient } from './db/dynamoDbClient.service';
 import { NotificationsRepository } from './repositories/notifications.repository';
 import { CreateNotificationDto } from './dto/createNotification.dto';
 import { UpdateNotificationDto } from './dto/updateNotification.dto';
