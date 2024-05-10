@@ -1,44 +1,44 @@
-import { Inject, Injectable } from "@nestjs/common";
-import { SERVICE } from "../config/services.enum";
-import { ClientProxy } from "@nestjs/microservices";
-import { firstValueFrom } from "rxjs";
+import { Inject, Injectable } from '@nestjs/common'
+import { ClientProxy } from '@nestjs/microservices'
+import { firstValueFrom } from 'rxjs'
+import { SERVICE } from '../config/services.enum'
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @Inject(SERVICE.PRODUCTS)
-    private readonly productsServiceClient: ClientProxy
-  ) {}
+	constructor(
+		@Inject(SERVICE.PRODUCTS)
+		private readonly productsServiceClient: ClientProxy,
+	) {}
 
-  async getProducts() {
-    const products = await firstValueFrom(
-      this.productsServiceClient.send('get_products', {})
-    )
+	async getProducts() {
+		const products = await firstValueFrom(
+			this.productsServiceClient.send('get_products', {}),
+		)
 
-    return products
-  }
+		return products
+	}
 
-  async getProductById(id: string) {
-    const product = await firstValueFrom(
-      this.productsServiceClient.send('get_product_by_id', id)
-    )
+	async getProductById(id: string) {
+		const product = await firstValueFrom(
+			this.productsServiceClient.send('get_product_by_id', id),
+		)
 
-    return product
-  }
+		return product
+	}
 
-  async getRecommendedProduct() {
-    const product = await firstValueFrom(
-      this.productsServiceClient.send('get_recommended_product', {})
-    )
+	async getRecommendedProduct() {
+		const product = await firstValueFrom(
+			this.productsServiceClient.send('get_recommended_product', {}),
+		)
 
-    return product
-  }
+		return product
+	}
 
-  async createProduct(product) {
-    const newProduct = await firstValueFrom(
-      this.productsServiceClient.send('create_product', product)
-    )
+	async createProduct(product) {
+		const newProduct = await firstValueFrom(
+			this.productsServiceClient.send('create_product', product),
+		)
 
-    return newProduct
-  }
+		return newProduct
+	}
 }

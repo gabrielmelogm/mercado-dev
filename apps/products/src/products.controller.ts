@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common'
-import { Product } from './entities/product.entity'
-import { ProductsService } from './products.service'
 import { MessagePattern, Payload } from '@nestjs/microservices'
 import { CreateProductDto } from './dto/createProduct.dto'
+import { Product } from './entities/product.entity'
+import { ProductsService } from './products.service'
 
 @Controller()
 export class ProductsController {

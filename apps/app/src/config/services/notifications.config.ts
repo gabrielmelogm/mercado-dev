@@ -1,14 +1,14 @@
-import { ClientProviderOptions, Transport } from "@nestjs/microservices";
-import { SERVICE } from "../services.enum";
+import { ClientProviderOptions, Transport } from '@nestjs/microservices'
+import { SERVICE } from '../services.enum'
 
 export const notificationsServiceConfig: ClientProviderOptions = {
-  name: SERVICE.NOTIFICATIONS,
-  transport: Transport.RMQ,
-  options: {
-    urls: ['amqp://admin:admin@rabbitmq:5672'],
-    queue: 'app',
-    queueOptions: {
-      durable: false
-    }
-  }
+	name: SERVICE.NOTIFICATIONS,
+	transport: Transport.RMQ,
+	options: {
+		urls: ['amqp://admin:admin@rabbitmq:5672'],
+		queue: 'app',
+		queueOptions: {
+			durable: false,
+		},
+	},
 }

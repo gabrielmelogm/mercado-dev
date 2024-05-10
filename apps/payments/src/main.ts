@@ -10,8 +10,8 @@ async function bootstrap() {
 			urls: ['amqp://admin:admin@rabbitmq:5672'],
 			queue: 'orders',
 			queueOptions: {
-				durable: false
-			}
+				durable: false,
+			},
 		},
 	})
 	await app.startAllMicroservices()

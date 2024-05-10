@@ -17,8 +17,8 @@ import { PaymentsRepository } from './repositories/payments.repository'
 					urls: ['amqp://admin:admin@rabbitmq:5672'],
 					queue: 'payments',
 					queueOptions: {
-						durable: false
-					}
+						durable: false,
+					},
 				},
 			},
 		]),

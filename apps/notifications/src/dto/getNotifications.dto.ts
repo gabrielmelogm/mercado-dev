@@ -1,3 +1,3 @@
 export class GetNotificationsDto {
-  userId: string
+	userId: string
 }

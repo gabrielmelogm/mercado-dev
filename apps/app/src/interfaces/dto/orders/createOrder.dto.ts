@@ -4,7 +4,7 @@ import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator'
 export class CreateOrderDto {
 	@ApiProperty({
 		minimum: 0.1,
-		example: 69.93
+		example: 69.93,
 	})
 	@IsNotEmpty()
 	@IsNumber()
@@ -12,7 +12,7 @@ export class CreateOrderDto {
 
 	@ApiProperty({
 		minimum: 1,
-		example: 2
+		example: 2,
 	})
 	@IsNotEmpty()
 	@IsNumber()
@@ -20,7 +20,7 @@ export class CreateOrderDto {
 	quantity: number
 
 	@ApiProperty({
-		example: 'clvue8q6l0000kgyi81ujmjgv'
+		example: 'clvue8q6l0000kgyi81ujmjgv',
 	})
 	@IsNotEmpty()
 	@IsString()

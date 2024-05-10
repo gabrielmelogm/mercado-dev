@@ -1,5 +1,5 @@
 export class CreateNotificationDto {
-  title: string
-  content: string
-  userId: string
+	title: string
+	content: string
+	userId: string
 }

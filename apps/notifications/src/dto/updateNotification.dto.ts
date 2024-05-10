@@ -1,4 +1,4 @@
 export class UpdateNotificationDto {
-  userId: string
-  notificationId: string
+	userId: string
+	notificationId: string
 }

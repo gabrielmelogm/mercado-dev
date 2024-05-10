@@ -39,12 +39,10 @@ export class OrdersService {
 		const notification = {
 			title: `New order Nº: ${createdOrder.id}`,
 			content: `Quantity: ${createdOrder.quantity}, Value: ${createdOrder.price}`,
-			userId: createdOrder.product_id
+			userId: createdOrder.product_id,
 		}
 
-		await lastValueFrom(
-			this.rmqClient.emit('create_order', message)
-		)
+		await lastValueFrom(this.rmqClient.emit('create_order', message))
 
 		return createdOrder
 	}

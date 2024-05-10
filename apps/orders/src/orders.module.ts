@@ -8,10 +8,7 @@ import { OrdersRepository } from './repositories/orders.repository'
 import { ordersServiceConfig } from './services/orders.service'
 
 @Module({
-	imports: [
-		PrismaModule,
-		ClientsModule.register([ordersServiceConfig]),
-	],
+	imports: [PrismaModule, ClientsModule.register([ordersServiceConfig])],
 	providers: [
 		OrdersService,
 		{
