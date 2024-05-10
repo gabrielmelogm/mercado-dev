@@ -10,5 +10,6 @@ async function bootstrap() {
 	app.connectMicroservice(ordersServiceConfig)
 	app.connectMicroservice(paymentsServiceConfig)
 	await app.startAllMicroservices()
+	await NestFactory.createMicroservice(NotificationsModule)
 }
 bootstrap()

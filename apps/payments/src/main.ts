@@ -15,6 +15,6 @@ async function bootstrap() {
 		},
 	})
 	await app.startAllMicroservices()
-	await app.listen(3002)
+	await NestFactory.createMicroservice(PaymentsModule)
 }
 bootstrap()
