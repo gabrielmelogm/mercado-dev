@@ -1,4 +1,5 @@
 import { ClientsModuleOptions } from '@nestjs/microservices'
+import { authServiceConfig } from './services/auth.config'
 import { notificationsServiceConfig } from './services/notifications.config'
 import { ordersServiceConfig } from './services/orders.config'
 import { productsServiceConfig } from './services/products.config'
@@ -9,4 +10,5 @@ export const microServicesConfig: ClientsModuleOptions = [
 	ordersServiceConfig,
 	notificationsServiceConfig,
 	usersServiceConfig,
+	authServiceConfig,
 ]
