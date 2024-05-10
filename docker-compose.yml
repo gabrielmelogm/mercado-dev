@@ -41,4 +41,4 @@ services:
       - "8000:8000"
     command: "-jar DynamoDBLocal.jar -sharedDb -inMemory -port 8000"
     volumes:
-      - "./.docker/dynamodb:/home/dynamodblocal/data"
+      - ./.docker/dynamodb:/home/dynamodblocal/data
