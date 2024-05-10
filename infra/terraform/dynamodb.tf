@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "5.48.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "sa-east-1"
-}
-
 resource "aws_dynamodb_table" "notifications" {
   name = "notifications"
   billing_mode = "PAY_PER_REQUEST"
