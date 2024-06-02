@@ -3,6 +3,7 @@ import { ClientProxy } from '@nestjs/microservices'
 import { firstValueFrom } from 'rxjs'
 import { SERVICE } from '../config/services.enum'
 import { LoginDto } from '../interfaces/dto/auth/login.dto'
+import { UserHeader } from '../interfaces/userHeader'
 
 @Injectable()
 export class AuthService {
@@ -32,5 +33,17 @@ export class AuthService {
 		)
 
 		return token
+	}
+
+	async revalidateToken(token: string): Promise<UserHeader | null> {
+		try {
+			const user = await firstValueFrom(
+				this.authServiceClient.send('auth_verify_token', { token }),
+			)
+
+			return user
+		} catch (_error) {
+			return null
+		}
 	}
 }

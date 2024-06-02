@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
+import { AuthGuard } from '../guards/auth.guard'
 import { CreateOrderDto } from '../interfaces/dto/orders/createOrder.dto'
 import { OrdersService } from '../services/orders.service'
 
@@ -8,6 +9,7 @@ import { OrdersService } from '../services/orders.service'
 export class OrdersController {
 	constructor(private readonly ordersService: OrdersService) {}
 
+	@UseGuards(AuthGuard)
 	@Get('orders')
 	async getAll() {
 		return await this.ordersService.findAll()

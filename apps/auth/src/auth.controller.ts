@@ -11,4 +11,9 @@ export class AuthController {
 	async login(@Payload() data: ReqUserLogin) {
 		return await this.authService.login(data.user)
 	}
+
+	@MessagePattern('auth_verify_token')
+	async verifyToken(@Payload() data: { token: string }) {
+		return await this.authService.revalidateToken(data.token)
+	}
 }

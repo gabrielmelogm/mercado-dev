@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common'
-import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices'
+import { EventPattern, Payload } from '@nestjs/microservices'
 import { PaymentStatus } from './entities/payment.entity'
 import { PaymentsService } from './payments.service'
 

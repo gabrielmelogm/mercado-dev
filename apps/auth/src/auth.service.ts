@@ -8,6 +8,7 @@ import { JwtService } from '@nestjs/jwt'
 import { ClientProxy } from '@nestjs/microservices'
 import { compareSync } from 'bcrypt'
 import { firstValueFrom } from 'rxjs'
+import { env } from '../env'
 import { UserPayload } from './@types/userPayload'
 
 @Injectable()
@@ -41,7 +42,7 @@ export class AuthService {
 			)
 
 			if (!user) throw new NotFoundException()
-		} catch (error) {
+		} catch (_error) {
 			return null
 		}
 
@@ -49,5 +50,18 @@ export class AuthService {
 		if (!isPasswordValid) return null
 
 		return user
+	}
+
+	async revalidateToken(
+		token: string,
+	): Promise<{ sub: string; email: string; iat: string; exp: string } | null> {
+		try {
+			const user = await this.jwtService.verify(token, {
+				secret: env.JWT_KEY,
+			})
+			return user
+		} catch (_error) {
+			return null
+		}
 	}
 }

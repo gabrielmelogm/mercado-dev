@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { PaymentDto } from '../../dto/payment.dto'
-import { Payment, PaymentStatus } from '../../entities/payment.entity'
+import { Payment } from '../../entities/payment.entity'
 import { PrismaService } from '../../prisma/prisma.service'
 import { PaymentsRepository } from '../payments.repository'
 

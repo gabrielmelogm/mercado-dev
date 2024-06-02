@@ -36,7 +36,7 @@ export class OrdersService {
 			updatedAt: createdOrder.updatedAt,
 		}
 
-		const notification = {
+		const _notification = {
 			title: `New order Nº: ${createdOrder.id}`,
 			content: `Quantity: ${createdOrder.quantity}, Value: ${createdOrder.price}`,
 			userId: createdOrder.product_id,

@@ -14,7 +14,7 @@ import { LocalStrategy } from './strategies/local.strategy'
 		ClientsModule.register([authServiceConfig]),
 		PassportModule,
 		JwtModule.register({
-			privateKey: env.JWT_KEY,
+			secret: env.JWT_KEY,
 			signOptions: {
 				expiresIn: `${env.SESSION_EXPIRES}h`,
 			},

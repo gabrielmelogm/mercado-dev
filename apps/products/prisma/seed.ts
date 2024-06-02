@@ -18,7 +18,7 @@ async function main() {
 			await prisma.products.create({
 				data: product,
 			})
-		} catch (error) {
+		} catch (_error) {
 			console.error('Seeding error')
 			return
 		}
